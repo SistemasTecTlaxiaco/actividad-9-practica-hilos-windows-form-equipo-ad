@@ -5,36 +5,48 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HilosRelojes
 {
-    public partial class Form1: Form
+    public partial class Form1 : Form
     {
+
+        private Thread hiloTlaxiaco, hiloNY, hiloMadrid, hiloTokio;
+        private bool relojesActivos = false;
+        private readonly object lockObj = new object();
+
         public Form1()
         {
             InitializeComponent();
+
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void btnIniciar_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void btnPausa_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
 
         }
 
-        private void label9_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-
+        
         }
     }
 }
