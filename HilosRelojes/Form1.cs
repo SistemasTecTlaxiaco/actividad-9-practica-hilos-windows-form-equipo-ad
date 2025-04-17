@@ -78,6 +78,11 @@ namespace HilosRelojes
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            relojesActivos = false;
+            hiloTlaxiaco?.Join();
+            hiloNY?.Join();
+            hiloMadrid?.Join();
+            hiloTokio?.Join();
 
         }
 
