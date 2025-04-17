@@ -26,6 +26,23 @@ namespace HilosRelojes
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
+            if (!relojesActivos)
+            {
+                relojesActivos = true;
+                btnIniciar.Enabled = false;
+                btnPausa.Enabled = true;
+
+                // Crear e iniciar hilos para cada ciudad
+                hiloTlaxiaco = new Thread(() => ActualizarReloj(lblHora1, "Central Standard Time"));
+                hiloNY = new Thread(() => ActualizarReloj(lblHora2, "Eastern Standard Time"));
+                hiloMadrid = new Thread(() => ActualizarReloj(lblHora3, "Central European Standard Time"));
+                hiloTokio = new Thread(() => ActualizarReloj(lblHora4, "Tokyo Standard Time"));
+
+                hiloTlaxiaco.Start();
+                hiloNY.Start();
+                hiloMadrid.Start();
+                hiloTokio.Start();
+            }
 
         }
 
