@@ -21,13 +21,30 @@ namespace HilosRelojes
         public Form1()
         {
             InitializeComponent();
-
+            this.FormClosing += Form1_FormClosing;
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void ActualizarReloj(Label label, string timeZoneId)
+        {
+            while (relojesActivos)
+            {
+                var horaActual = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById(timeZoneId));
+
+                // Actualizar la interfaz de manera segura
+                this.Invoke((MethodInvoker)delegate
+                {
+                    label.Text = $"{label.Tag} {horaActual:HH:mm:ss}";
+                });
+
+                Thread.Sleep(1000); // Actualizar cada segundo
+            }
+        }
+
 
         private void btnPausa_Click(object sender, EventArgs e)
         {
