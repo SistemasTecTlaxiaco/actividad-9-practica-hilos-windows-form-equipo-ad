@@ -65,6 +65,9 @@ namespace HilosRelojes
 
         private void btnPausa_Click(object sender, EventArgs e)
         {
+            relojesActivos = false;
+            btnIniciar.Enabled = true;
+            btnPausa.Enabled = false;
 
         }
 
